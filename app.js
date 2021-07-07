@@ -1,5 +1,5 @@
 const PORT = 8080;
-const DBTOKEN = "YOUR DB TOKEN";
+const DBTOKEN = "YOUR TOKEN";
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -11,11 +11,11 @@ app.use(todoRouter);
 
 const launchServer = async () => {
     try {
-        await mongoose.connect(DBTOKEN, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(DBTOKEN, { useNewUrlParser: true, useUnifiedTopology: true , useFindAndModify:false});
     }catch(err){
     console.log('Mongo connection error!');
     }
-app.listen(PORT);
+    app.listen(PORT);
 }
 
 launchServer();
