@@ -7,6 +7,14 @@ const todoRouter = require("./routes/todo");
 const app = express();
 
 app.use(bodyParser.json());
+app.use((req,res,next)=>{
+    res.append({
+        "Acces-Control-Allow-Origin":"*",
+        "Acces-Control-Allow-Methods":["GET","POST","PUT","DELETE"],
+        "Acces-Control-Allow-Headers":['Content-Type']
+    });
+    next();
+});
 app.use(todoRouter);
 
 const launchServer = async () => {
